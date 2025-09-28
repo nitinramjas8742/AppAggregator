@@ -1,14 +1,21 @@
-import { useState } from 'react'
-
-import './App.css'
-import Homepage from './pages/Homepage';
-import { NabvarComponent } from './components/NavbarComponent';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { NavbarComponent } from "./components/NavbarComponent";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ContributePage from "./pages/ContributePage";
 
 function App() {
+  const [search, setSearch] = React.useState("");
+
   return (
-    <>
-      <Homepage />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contribute" element={<ContributePage />} />
+      </Routes>
+    </Router>
   );
 }
 
