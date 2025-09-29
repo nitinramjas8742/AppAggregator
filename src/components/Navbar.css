@@ -1,0 +1,33 @@
+.colorful-typewriter {
+  overflow: hidden;
+  border-right: 2px solid #fff; /* cursor */
+  white-space: nowrap;
+  width: 0;
+  font-weight: bold;
+
+  /* gradient text */
+  background: linear-gradient(90deg, #f87171, #fbbf24, #34d399, #3b82f6, #a78bfa, #f472b6);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: typing 2s steps(18, end) forwards, blink 0.75s step-end infinite, gradientShift 3s linear infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 16ch; } /* match your text length */
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Gradient shift animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
