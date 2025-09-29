@@ -12,9 +12,9 @@ const Homepage = () => {
   const llmLinks = [
     { name: "ChatGPT", url: "https://chat.openai.com/", info: "OpenAI's conversational AI assistant.", img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
     { name: "Gemini", url: "https://gemini.google.com/", info: "Google's generative AI chatbot.", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/2560px-Google_Gemini_logo.svg.png"},
-    { name: "Perplexity", url: "https://www.perplexity.ai/", info: "AI-powered search and answers.", img: "https://avatars.githubusercontent.com/u/10639145?s=200&v=4" },
+    { name: "Perplexity", url: "https://www.perplexity.ai/", info: "AI-powered search and answers.", img: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/perplexity-ai-icon.png" },
     { name: "Claude", url: "https://claude.ai/", info: "Anthropic's helpful AI assistant.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Po3958DsH3mbAF6CdYaH_fRL4aA6K49y-B_diepetSe0WR3SdqEGkZMHoNFv8MONNCE&usqp=CAU" },
-    { name: "Mistral", url: "https://www.mistral.ai/", info: "Fast, open-source LLM chat.", img: "https://avatars.githubusercontent.com/u/149570682?s=200&v=4" },
+    { name: "Mistral", url: "https://www.mistral.ai/", info: "Fast, open-source LLM chat.", img: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/mistral-ai-icon.png" },
   ];
 
   const paymentLinks = [
