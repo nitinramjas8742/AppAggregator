@@ -17,6 +17,40 @@ const Homepage = () => {
     { name: "Mistral", url: "https://www.mistral.ai/", info: "Fast, open-source LLM chat.", img: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/mistral-ai-icon.png" },
   ];
 
+  const rideHailingPlatforms = [
+  { 
+    name: "Ola Cabs", 
+    url: "https://www.olacabs.com/", 
+    info: "India’s largest ride-hailing app offering cabs, autos, bikes, and outstation rides.", 
+    img: "https://upload.wikimedia.org/wikipedia/en/0/0f/Ola_Cabs_logo.svg" 
+  },
+  { 
+    name: "Uber India", 
+    url: "https://www.uber.com/in/en/", 
+    info: "Global ride-hailing platform operating in major Indian cities with cars and bikes.", 
+    img: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" 
+  },
+  { 
+    name: "Rapido", 
+    url: "https://rapido.bike/", 
+    info: "Popular bike-taxi service across Indian cities offering affordable rides.", 
+    img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Rapido_%28company%29.svg/1200px-Rapido_%28company%29.svg.png" 
+  },
+  { 
+    name: "InDrive", 
+    url: "https://indrive.com/", 
+    info: "Ride-hailing app where passengers and drivers can negotiate fares, active in India.", 
+    img: "https://img.utdstc.com/icon/f4e/cdc/f4ecdc32973c854ecf6f9b082a3450715cb1f77a47a9a6a27c3db9d1cd8ba563:200" 
+  },
+  { 
+    name: "Jugnoo", 
+    url: "https://jugnoo.io/jugnootaxi/taxi-app/", 
+    info: "Auto-rickshaw hailing app providing affordable last-mile connectivity in Indian cities.", 
+    img: "https://jugnoo.io/wp-content/uploads/2020/07/marketplace-banner.svg" 
+  }
+];
+
+
   const paymentLinks = [
     { name: "Paytm", url: "https://paytm.com/", info: "India's leading digital wallet and payments app.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPC3UNIfxgrAHMh6VLpvokIYGUjmHIVBSTjA&s" },
     { name: "Google Pay", url: "https://pay.google.com/", info: "Google's secure payment platform.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyVO9LUWF81Ov6LZR50eDNu5rNFCpkn0LwYQ&s" },
@@ -395,15 +429,14 @@ const ottLinks = [
     info: "Free streaming platform for movies, TV shows, and original content in India.",
     img: "https://mxplayerpc.com/images/uploads/2022-08-30/icon-pgpn8.png"
   },
-
 ];
 
 
 
   const sections = {
     llm: { title: "Popular LLM Apps", color: "border-blue-100", data: llmLinks },
-    payment: { title: "Payment Apps", color: "border-green-100", data: paymentLinks },
     ecommerce: { title: "E-commerce Apps", color: "border-yellow-100", data: ecommerceLinks },
+    ridebooking: { title: "Ride-Booking Platforms", color: "border-gray-100", data: rideHailingPlatforms },
     movieBooking : { title: "Movie Booking Apps", color: "border-red-100", data: movieBookingLinks },
     foodDelivery: { title: "Food Delivery Apps", color: "border-purple-100", data: foodLinks },
     bookings: { title: "Booking Apps", color: "border-pink-100", data: bookingLinks },
@@ -414,6 +447,7 @@ const ottLinks = [
     education: { title: "Educational Platforms", color: "border-lime-100", data: educationLinks },
     digitalNews: { title: "Digital News Platforms", color: "border-rose-100", data: digitalNewsLinks },
     ott: { title: "OTT Platforms", color: "border-violet-100", data: ottLinks },
+    payment: { title: "Payment Apps", color: "border-green-100", data: paymentLinks },
   };
 
   // 🔍 Highlight section based on sidebar search
