@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/link-looop-connectDiscoverFlow.png";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css"; // custom CSS
 
 export function NavbarComponent({ search, setSearch }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Contribute", path: "/contribute" },
+  ];
+
   return (
     <header className="border-b border-gray-200 bg-white shadow-sm sticky top-0 z-50 w-full">
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-[65px]">
@@ -18,47 +26,30 @@ export function NavbarComponent({ search, setSearch }) {
           <img src={logo} alt="logo" className="h-8 w-auto object-contain" />
         </NavLink>
 
-        {/* Typewriter + Colorful Text */}
+        {/* Title */}
         <div className="mx-4 text-lg sm:text-xl font-extrabold whitespace-nowrap colorful-typewriter">
           Indian Web Store
         </div>
 
-        {/* Menu */}
-        <div
-          id="collapseMenu"
-          className="max-lg:hidden lg:block max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50"
-        >
-          <ul className="lg:flex lg:ml-10 lg:gap-x-6 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[280px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
-            
-            <li className="mb-6 hidden max-lg:block">
-              <NavLink to="/">
-                <img src={logo} alt="logo" className="h-10 w-auto object-contain" />
-              </NavLink>
-            </li>
+        {/* Desktop Menu */}
+        <nav className="hidden lg:flex lg:ml-10 lg:gap-x-8">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors duration-200 hover:text-blue-600 ${
+                  isActive ? "text-blue-600" : "text-gray-700"
+                }`
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
+        </nav>
 
-            {[
-              { name: "Home", path: "/" },
-              { name: "About", path: "/about" },
-              { name: "Contribute", path: "/contribute" },
-            ].map((link) => (
-              <li key={link.name} className="max-lg:border-b max-lg:border-gray-200 max-lg:py-3 px-3">
-                <NavLink
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `text-sm font-medium block lg:hover:text-blue-600 ${
-                      isActive ? "text-blue-600" : "text-gray-700"
-                    }`
-                  }
-                >
-                  {link.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Right side (search + mobile menu) */}
-        <div className="flex items-center gap-4 ml-auto">
+        {/* Right side (search + mobile menu button) */}
+        <div className="flex items-center gap-4 ml-auto relative">
           {/* Search Bar */}
           <div className="hidden sm:flex items-center bg-gray-100 px-3 py-2 border border-gray-200 rounded-md focus-within:border-blue-500 transition-all">
             <input
@@ -74,11 +65,45 @@ export function NavbarComponent({ search, setSearch }) {
           </div>
 
           {/* Mobile menu button */}
-          <button id="toggleOpen" className="lg:hidden cursor-pointer">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          <button
+            id="toggleOpen"
+            className="lg:hidden cursor-pointer"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? (
+              // Close icon
+              <svg className="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              // Hamburger icon
+              <svg className="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
+
+          {/* Mobile dropdown menu */}
+          {menuOpen && (
+            <div
+              className="absolute top-12 right-0 bg-white border border-gray-200 shadow-lg rounded-xl p-3 w-40 flex flex-col space-y-2 animate-fadeIn"
+            >
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setMenuOpen(false)} // close after click
+                  className={({ isActive }) =>
+                    `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                      isActive ? "text-blue-600 bg-blue-50" : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </header>
