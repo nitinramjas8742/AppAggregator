@@ -32,7 +32,7 @@ export function NavbarComponent({ search, setSearch }) {
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden lg:flex lg:ml-10 lg:gap-x-8">
+        <nav className="hidden lg:flex lg:ml-10 lg:gap-x-8 items-center">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
@@ -46,6 +46,14 @@ export function NavbarComponent({ search, setSearch }) {
               {link.name}
             </NavLink>
           ))}
+
+          {/* Login / Signup button */}
+          <NavLink
+            to="/auth"
+            className="ml-6 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition"
+          >
+            Login / Signup
+          </NavLink>
         </nav>
 
         {/* Right side (search + mobile menu button) */}
@@ -85,9 +93,7 @@ export function NavbarComponent({ search, setSearch }) {
 
           {/* Mobile dropdown menu */}
           {menuOpen && (
-            <div
-              className="absolute top-12 right-0 bg-white border border-gray-200 shadow-lg rounded-xl p-3 w-40 flex flex-col space-y-2 animate-fadeIn"
-            >
+            <div className="absolute top-12 right-0 bg-white border border-gray-200 shadow-lg rounded-xl p-3 w-40 flex flex-col space-y-2 animate-fadeIn">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.name}
@@ -95,13 +101,24 @@ export function NavbarComponent({ search, setSearch }) {
                   onClick={() => setMenuOpen(false)} // close after click
                   className={({ isActive }) =>
                     `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                      isActive ? "text-blue-600 bg-blue-50" : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                      isActive
+                        ? "text-blue-600 bg-blue-50"
+                        : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
                     }`
                   }
                 >
                   {link.name}
                 </NavLink>
               ))}
+
+              {/* Login/Signup (mobile view) */}
+              <NavLink
+                to="/auth"
+                onClick={() => setMenuOpen(false)}
+                className="mt-1 px-3 py-2 text-center rounded-md text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition"
+              >
+                Login / Signup
+              </NavLink>
             </div>
           )}
         </div>
