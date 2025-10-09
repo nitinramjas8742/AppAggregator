@@ -49,7 +49,7 @@ export function NavbarComponent({ search, setSearch }) {
 
           {/* Login / Signup button */}
           <NavLink
-            to="/auth"
+            to="/login"
             className="ml-6 px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition"
           >
             Login / Signup
@@ -113,7 +113,7 @@ export function NavbarComponent({ search, setSearch }) {
 
               {/* Login/Signup (mobile view) */}
               <NavLink
-                to="/auth"
+                to="/login"
                 onClick={() => setMenuOpen(false)}
                 className="mt-1 px-3 py-2 text-center rounded-md text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition"
               >

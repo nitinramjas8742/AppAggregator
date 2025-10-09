@@ -1,0 +1,199 @@
+/* === Page Background === */
+.login-page,
+.signup-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Abstract Blobs */
+.login-page::before,
+.signup-page::before,
+.login-page::after,
+.signup-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.login-page::before,
+.signup-page::before {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -100px;
+  background: #89f7fe;
+}
+
+.login-page::after,
+.signup-page::after {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  right: -100px;
+  background: #66a6ff;
+}
+
+/* === Form Container (Glass Card) === */
+.login-container,
+.signup-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  color: #333;
+  animation: fadeIn 0.6s ease;
+  margin: 1rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .login-container,
+  .signup-container {
+    padding: 1.5rem 1rem;
+    margin: 0.5rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Titles === */
+.login-title,
+.signup-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.3rem;
+}
+
+.login-subtitle,
+.signup-subtitle {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile responsiveness for titles */
+@media (min-width: 480px) {
+  .login-title,
+  .signup-title {
+    font-size: 1.8rem;
+  }
+  
+  .login-subtitle,
+  .signup-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* === Form Styling === */
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #222;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+  font-size: 0.95rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.form-group input:focus {
+  border-color: #66a6ff;
+  box-shadow: 0 0 6px rgba(102, 166, 255, 0.4);
+}
+
+/* === Password Eye Icon === */
+.password-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.password-toggle:hover {
+  opacity: 1;
+}
+
+/* === Buttons === */
+.login-btn,
+.signup-btn {
+  background: linear-gradient(135deg, #66a6ff, #89f7fe);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.login-btn:hover,
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 166, 255, 0.3);
+}
+
+/* === Footer Links === */
+.login-footer,
+.signup-footer {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.signup-link,
+.login-link {
+  color: #0056d6;
+  font-weight: 500;
+  text-decoration: none;
+}
