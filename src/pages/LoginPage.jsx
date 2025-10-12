@@ -3,10 +3,12 @@ import "./LoginPage.css";
 import { NavLink } from "react-router-dom";
 import { NavbarComponent } from "../components/NavbarComponent";
 
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

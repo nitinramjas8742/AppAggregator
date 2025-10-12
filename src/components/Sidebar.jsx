@@ -2,7 +2,8 @@ import React from "react";
 
 const Sidebar = ({ sections, activeSection, setActiveSection, sidebarSearch, setSidebarSearch }) => {
   return (
-    <aside className="w-56 bg-gray-100 border-r p-4 h-screen sticky top-0 overflow-y-auto">
+    // Hidden on small screens (<640px), visible on larger screens
+    <aside className="w-56 bg-gray-100 border-r p-4 h-screen sticky top-0 overflow-y-auto hidden sm:block">
       <h2 className="font-bold mb-3 text-lg">Sections</h2>
       <input
         type="text"

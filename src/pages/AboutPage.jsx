@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Users, Layers, Search, Globe } from "lucide-react";
 import logo from "../assets/link-looop-connectDiscoverFlow.png";
-import {NavbarComponent} from "../components/NavbarComponent";
-
+import { NavbarComponent } from "../components/NavbarComponent";
 
 export default function AboutPage() {
   const [search, setSearch] = React.useState("");
+
+  // Scroll to top when this page mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen justify-between">
+    <div className="flex flex-col min-h-screen">
       <NavbarComponent search={search} setSearch={setSearch} />
 
-      {/* Top content */}
+      {/* Main content */}
       <div className="max-w-5xl mx-auto px-6 py-12">
         {/* Heading */}
         <motion.h1
@@ -73,9 +78,7 @@ export default function AboutPage() {
                   {item.title}
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {item.desc}
-              </p>
+              <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -87,9 +90,7 @@ export default function AboutPage() {
           transition={{ delay: 1, duration: 0.8 }}
           className="mt-12 text-center"
         >
-          <h2 className="text-2xl font-semibold text-gray-800">
-            Our vision is simple —
-          </h2>
+          <h2 className="text-2xl font-semibold text-gray-800">Our vision is simple —</h2>
           <p className="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">
             To create a world where finding the right app or resource is no
             longer a hassle, but a joy.
@@ -112,11 +113,7 @@ export default function AboutPage() {
 
       {/* Big Logo at bottom */}
       <div className="flex justify-center mb-6">
-        <img
-          src={logo}
-          alt="Chaos Logo"
-          className="w-2/3 max-w-4xl h-auto opacity-90"
-        />
+        <img src={logo} alt="Chaos Logo" className="w-2/3 max-w-4xl h-auto opacity-90" />
       </div>
     </div>
   );
