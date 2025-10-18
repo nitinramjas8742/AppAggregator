@@ -14,25 +14,25 @@ export default defineConfig({
       registerType: 'autoUpdate', // automatically updates the service worker
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'My React Vite PWA',
-        short_name: 'MyPWA',
-        description: 'My awesome React app as a PWA',
+        name: 'LinkLooop',
+        short_name: 'LinkLooop',
+        description: 'Indian Web Store for all your needs',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: 'link-looop-connectDiscoverFlow.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'link-looop-connectDiscoverFlow.png',
             sizes: '512x512',
             type: 'image/png',
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'link-looop-connectDiscoverFlow.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable', // allows adaptive icons

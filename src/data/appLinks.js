@@ -12,19 +12,25 @@
     name: "Ola Cabs", 
     url: "https://www.olacabs.com/", 
     info: "India’s largest ride-hailing app offering cabs, autos, bikes, and outstation rides.", 
-    img: "https://upload.wikimedia.org/wikipedia/en/0/0f/Ola_Cabs_logo.svg" 
+    img: "https://upload.wikimedia.org/wikipedia/en/0/0f/Ola_Cabs_logo.svg" ,
+    android: "intent://olacabs.com/#Intent;scheme=https;package=com.olacabs.customer;end",
+    ios: "ola://"
   },
   { 
     name: "Uber India", 
     url: "https://www.uber.com/in/en/", 
     info: "Global ride-hailing platform operating in major Indian cities with cars and bikes.", 
-    img: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" 
+    img: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" ,
+    android: "intent://uber.com/#Intent;scheme=https;package=com.ubercab;end",
+    ios: "uber://"
   },
   { 
     name: "Rapido", 
     url: "https://rapido.bike/", 
     info: "Popular bike-taxi service across Indian cities offering affordable rides.", 
-    img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Rapido_%28company%29.svg/1200px-Rapido_%28company%29.svg.png" 
+    img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Rapido_%28company%29.svg/1200px-Rapido_%28company%29.svg.png" ,
+    android: "intent://rapido.bike/#Intent;scheme=https;package=com.rapido.passenger;end",
+    ios: "rapido://"
   },
   { 
     name: "InDrive", 
@@ -42,9 +48,12 @@
 
 
  export const paymentLinks = [
-    { name: "Paytm", url: "https://paytm.com/", info: "India's leading digital wallet and payments app.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPC3UNIfxgrAHMh6VLpvokIYGUjmHIVBSTjA&s" },
-    { name: "Google Pay", url: "https://pay.google.com/", info: "Google's secure payment platform.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyVO9LUWF81Ov6LZR50eDNu5rNFCpkn0LwYQ&s" },
-    { name: "PhonePe", url: "https://www.phonepe.com/", info: "UPI-based payments and money transfer.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo4x8kSTmPUq4PFzl4HNT0gObFuEhivHOFYg&s" },
+    { name: "Paytm", url: "https://paytm.com/", info: "India's leading digital wallet and payments app.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPC3UNIfxgrAHMh6VLpvokIYGUjmHIVBSTjA&s",android: "intent://paytm.com/#Intent;scheme=https;package=net.one97.paytm;end",
+    ios: "paytm://" },
+    { name: "Google Pay", url: "https://pay.google.com/", info: "Google's secure payment platform.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyVO9LUWF81Ov6LZR50eDNu5rNFCpkn0LwYQ&s" ,android: "intent://pay.google.com/#Intent;scheme=https;package=com.google.android.apps.nbu.paisa.user;end",
+    ios: "tez://"},
+    { name: "PhonePe", url: "https://www.phonepe.com/", info: "UPI-based payments and money transfer.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo4x8kSTmPUq4PFzl4HNT0gObFuEhivHOFYg&s",android: "intent://phonepe.com/#Intent;scheme=https;package=com.phonepe.app;end",
+    ios: "phonepe://" },
     { name: "Amazon Pay", url: "https://www.amazon.in/amazonpay/home", info: "Amazon's payment and wallet service.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg-oM_Rzaa0qVSLEQY4-0VDLl1sdudCFFv-Q&s" },
     { name: "BHIM", url: "https://www.bhimupi.org.in/", info: "Official UPI app by NPCI for instant payments.", img: "https://img.icons8.com/?size=512&id=5RcHTSNy4fbL&format=png" },
   ];
@@ -97,25 +106,33 @@ export const foodLinks = [
     name: "Zomato", 
     url: "https://www.zomato.com/", 
     info: "Food delivery, dining & restaurant discovery platform.", 
-    img: "https://upload.wikimedia.org/wikipedia/commons/7/75/Zomato_logo.png" 
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/75/Zomato_logo.png",
+    android: "intent://www.zomato.com/#Intent;scheme=https;package=com.application.zomato;end",
+    ios: "zomato://"
   },
   { 
     name: "Swiggy", 
     url: "https://www.swiggy.com/", 
     info: "India's leading online food ordering and delivery platform.", 
-    img: "https://upload.wikimedia.org/wikipedia/commons/1/13/Swiggy_logo.png" 
+    img: "https://upload.wikimedia.org/wikipedia/commons/1/13/Swiggy_logo.png",
+    android: "intent://www.swiggy.com/#Intent;scheme=https;package=in.swiggy.android;end",
+    ios: "swiggy://"
   },
   { 
     name: "Zepto", 
     url: "https://www.zepto.com/", 
     info: "10-minute grocery delivery app in India.", 
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Bh36VUEJ2DeC0vl6oKkElCXqN-anYYCROg&s" 
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4Bh36VUEJ2DeC0vl6oKkElCXqN-anYYCROg&s",
+    android: "intent://www.zepto.com/#Intent;scheme=https;package=com.zeptoconsumerapp;end",
+    ios: "zepto://"
   },
   { 
     name: "Blinkit", 
     url: "https://www.blinkit.com/", 
     info: "Instant grocery delivery platform (acquired by Zomato).", 
-    img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Blinkit-yellow-app-icon.svg" 
+    img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Blinkit-yellow-app-icon.svg",
+    android: "intent://www.blinkit.com/#Intent;scheme=https;package=com.grofers.customerapp;end",
+    ios: "blinkit://"
   },
   { 
     name: "Instamart", 
@@ -169,13 +186,17 @@ export const socialMediaLinks = [
     name: "Facebook", 
     url: "https://www.facebook.com/", 
     info: "World's largest social networking site to connect with friends and communities.", 
-    img: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" 
+    img: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg",
+    android: "intent://www.facebook.com/#Intent;scheme=https;package=com.facebook.katana;end",
+    ios: "fb://"
   },
   { 
     name: "Instagram", 
     url: "https://www.instagram.com/", 
     info: "Meta's photo and video sharing platform with reels and stories.", 
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" 
+    img: "https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" ,
+    android: "intent://www.instagram.com/#Intent;scheme=https;package=com.instagram.android;end",
+    ios: "instagram://"
   },
   { 
     name: "Twitter (X)", 
@@ -205,7 +226,9 @@ export const socialMediaLinks = [
     name: "YouTube", 
     url: "https://www.youtube.com/", 
     info: "Video sharing platform for music, entertainment, and learning.", 
-    img: "https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" 
+    img: "https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" ,
+    android: "intent://www.youtube.com/#Intent;scheme=https;package=com.google.android.youtube;end",
+    ios: "youtube://"
   }
 ];
 export const datingLinks = [
@@ -252,7 +275,9 @@ export const jobPortalsLinks = [
     name: "LinkedIn",
     url: "https://www.linkedin.com/jobs/",
     info: "Professional networking platform with job listings and company insights.",
-    img: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg",
+    android: "intent://www.linkedin.com/#Intent;scheme=https;package=com.linkedin.android;end",
+    ios: "linkedin://"
   },
   {
     name: "Indeed",
@@ -387,31 +412,41 @@ export const ottLinks = [
     name: "Netflix",
     url: "https://www.netflix.com/in/",
     info: "Global streaming platform offering movies, TV shows, documentaries, and originals.",
-    img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+     android: "intent://www.netflix.com/#Intent;scheme=https;package=com.netflix.mediaclient;end",
+    ios: "nflx://"
   },
   {
     name: "Amazon Prime Video",
     url: "https://www.primevideo.com/",
     info: "Streaming service with a wide range of movies, TV shows, and Amazon Originals.",
-    img: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png"
+    img: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png",
+    android: "intent://www.primevideo.com/#Intent;scheme=https;package=com.amazon.avod.thirdpartyclient;end",
+    ios: "primevideo://"
   },
   {
     name: "Jio Hotstar",
     url: "https://www.hotstar.com/in",
     info: "Popular platform for movies, TV shows, sports, and Disney content in India.",
-    img: "https://images.hindustantimes.com/tech/img/2025/02/14/1600x900/JioHotstar_1739533540278_1739533540622.jpg"
+    img: "https://images.hindustantimes.com/tech/img/2025/02/14/1600x900/JioHotstar_1739533540278_1739533540622.jpg",
+    android: "intent://www.hotstar.com/#Intent;scheme=https;package=in.startv.hotstar;end",
+    ios: "hotstar://"
   },
   {
     name: "Zee5",
     url: "https://www.zee5.com/",
     info: "Indian OTT platform offering movies, TV shows, originals, and regional content.",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrUo192NQMG5gnIQVeRrvLTSEETsZlzH2Meg&s"
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrUo192NQMG5gnIQVeRrvLTSEETsZlzH2Meg&s",
+    android: "intent://www.zee5.com/#Intent;scheme=https;package=com.graymatrix.did;end",
+    ios: "zee5://"
   },
   {
     name: "Sony LIV",
     url: "https://www.sonyliv.com/",
     info: "Streaming platform with movies, TV shows, and sports content from Sony Entertainment.",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReZjczq8DrzHnGVLu-b_2lMVwRtsyt1ArgSA&s"
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReZjczq8DrzHnGVLu-b_2lMVwRtsyt1ArgSA&s",
+    android: "intent://www.sonyliv.com/#Intent;scheme=https;package=com.sonyliv;end",
+    ios: "sonyliv://"
   },
   {
     name: "MX Player",
