@@ -1,11 +1,15 @@
+// src/pages/Homepage.jsx
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { NavbarComponent } from "../components/NavbarComponent";
 import Sidebar from "../components/Sidebar";
 import AppSection from "../components/AppSection";
-import {NoticeHeadline} from "../components/NoticeHeadline";
-import {llmLinks,ecommerceLinks, rideHailingPlatforms,movieBookingLinks,foodLinks ,bookingLinks,
-  socialMediaLinks,datingLinks,jobPortalsLinks,governmentPrepLinks,educationLinks,digitalNewsLinks,
-  ottLinks,paymentLinks} from "../data/appLinks";
+import { NoticeHeadline } from "../components/NoticeHeadline";
+import {
+  llmLinks, ecommerceLinks, rideHailingPlatforms, movieBookingLinks, foodLinks, bookingLinks,
+  socialMediaLinks, datingLinks, jobPortalsLinks, governmentPrepLinks, educationLinks,
+  digitalNewsLinks, ottLinks, paymentLinks
+} from "../data/appLinks";
 
 const Homepage = () => {
   const [search, setSearch] = useState("");
@@ -13,14 +17,15 @@ const Homepage = () => {
   const [sidebarSearch, setSidebarSearch] = useState("");
   const isLoggedIn = false; // mock auth
   const premiumApps = [];
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
+  const navigate = useNavigate();
 
- 
   const sections = {
     llm: { title: "Popular LLM Apps", color: "border-blue-100", data: llmLinks },
     ecommerce: { title: "E-commerce Apps", color: "border-yellow-100", data: ecommerceLinks },
     ridebooking: { title: "Ride-Booking Platforms", color: "border-gray-100", data: rideHailingPlatforms },
-    movieBooking : { title: "Movie Booking Apps", color: "border-red-100", data: movieBookingLinks },
+    movieBooking: { title: "Movie Booking Apps", color: "border-red-100", data: movieBookingLinks },
     foodDelivery: { title: "Food Delivery Apps", color: "border-purple-100", data: foodLinks },
     bookings: { title: "Booking Apps", color: "border-pink-100", data: bookingLinks },
     socialMediaLinks: { title: "Social Media Apps", color: "border-indigo-100", data: socialMediaLinks },
@@ -38,14 +43,27 @@ const Homepage = () => {
     sections[key].title.toLowerCase().includes(sidebarSearch.toLowerCase())
   );
 
-useEffect(() => {
-  if (sidebarSearch.trim() === "") {
-    // ✅ if sidebar search is cleared, go back to "all"
-    setActiveSection("all");
-  } else if (matchedSection) {
-    setActiveSection(matchedSection);
-  }
-}, [sidebarSearch]);
+  useEffect(() => {
+    if (sidebarSearch.trim() === "") {
+      // ✅ if sidebar search is cleared, go back to "all"
+      setActiveSection("all");
+    } else if (matchedSection) {
+      setActiveSection(matchedSection);
+    }
+  }, [sidebarSearch, matchedSection]);
+
+  useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 175) {
+      setShowScrollButton(true);
+    } else {
+      setShowScrollButton(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   // 🔍 Global search across all apps
   const allApps = Object.keys(sections).flatMap(key =>
@@ -55,6 +73,9 @@ useEffect(() => {
     app.name.toLowerCase().includes(search.toLowerCase()) ||
     app.info.toLowerCase().includes(search.toLowerCase())
   );
+
+
+
 
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -73,7 +94,7 @@ useEffect(() => {
 
         {/* Notice Headline for non-logged-in users */}
         {!isLoggedIn && (
-          <NoticeHeadline text="🚨 To unlock premium apps, just log in! 🔑✨"/>
+          <NoticeHeadline text="🚨 To unlock premium apps, just log in! 🔑✨" />
         )}
 
         {/* App Sections */}
@@ -96,9 +117,35 @@ useEffect(() => {
           />
         )}
       </main>
+
+      {/* Floating search button (mobile only) */}
+      {/* Floating search button (mobile only) */}
+{showScrollButton && (
+  <button
+    onClick={() => navigate("/search")}
+    className="fixed bottom-6 right-6 sm:hidden bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full p-4 shadow-lg hover:brightness-110 active:scale-95 transition-all duration-200 focus:outline-none"
+    aria-label="Open search"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      className="w-6 h-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m21 21-4.35-4.35m1.6-4.4a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+      />
+    </svg>
+  </button>
+)}
+
+
     </div>
   );
 };
 
 export default Homepage;
-

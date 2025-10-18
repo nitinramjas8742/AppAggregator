@@ -6,6 +6,7 @@ import AboutPage from "./pages/AboutPage";
 import ContributePage from "./pages/ContributePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const [search, setSearch] = React.useState("");
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contribute" element={<ContributePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
     </Router>
   );
