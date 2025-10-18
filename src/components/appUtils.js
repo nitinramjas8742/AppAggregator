@@ -10,19 +10,28 @@ export function openAppOrWeb(app) {
   const isAndroid = /android/i.test(userAgent);
   const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
-  // Determine which link to use
-  let linkToOpen = app.url; // default to web URL
+  const webUrl = app.url; // always fallback to website
+  let appUrl = null;
 
   if (isAndroid && app.android) {
-    linkToOpen = app.android;
+    appUrl = app.android; // e.g., "zomato://"
   } else if (isIOS && app.ios) {
-    linkToOpen = app.ios;
+    appUrl = app.ios; // e.g., "zomato://"
   }
 
-  if (!linkToOpen) {
-    return console.warn(`No available link for app: ${app.name}`);
+  if (!appUrl) {
+    // No app URL, open website
+    window.location.href = webUrl;
+    return;
   }
 
-  // Open the link
-  window.location.href = linkToOpen;
+  const now = Date.now();
+  window.location.href = appUrl;
+
+  // Fallback to web after 1.5s if app didn’t open
+  setTimeout(() => {
+    if (Date.now() - now < 2000) {
+      window.location.href = webUrl;
+    }
+  }, 1500);
 }
