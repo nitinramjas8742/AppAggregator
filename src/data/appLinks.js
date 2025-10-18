@@ -48,11 +48,15 @@
 
 
  export const paymentLinks = [
-    { name: "Paytm", url: "https://paytm.com/", info: "India's leading digital wallet and payments app.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPC3UNIfxgrAHMh6VLpvokIYGUjmHIVBSTjA&s",android: "intent://paytm.com/#Intent;scheme=https;package=net.one97.paytm;end",
+    { name: "Paytm", url: "https://paytm.com/", info: "India's leading digital wallet and payments app.", 
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPC3UNIfxgrAHMh6VLpvokIYGUjmHIVBSTjA&s",
+      android: "intent://paytm.com/#Intent;scheme=https;package=net.one97.paytm;end",
     ios: "paytm://" },
     { name: "Google Pay", url: "https://pay.google.com/", info: "Google's secure payment platform.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyVO9LUWF81Ov6LZR50eDNu5rNFCpkn0LwYQ&s" ,android: "intent://pay.google.com/#Intent;scheme=https;package=com.google.android.apps.nbu.paisa.user;end",
     ios: "tez://"},
-    { name: "PhonePe", url: "https://www.phonepe.com/", info: "UPI-based payments and money transfer.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo4x8kSTmPUq4PFzl4HNT0gObFuEhivHOFYg&s",android: "intent://phonepe.com/#Intent;scheme=https;package=com.phonepe.app;end",
+    { name: "PhonePe", url: "https://www.phonepe.com/", info: "UPI-based payments and money transfer.", 
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo4x8kSTmPUq4PFzl4HNT0gObFuEhivHOFYg&s",
+      android: "phonepe://",
     ios: "phonepe://" },
     { name: "Amazon Pay", url: "https://www.amazon.in/amazonpay/home", info: "Amazon's payment and wallet service.", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg-oM_Rzaa0qVSLEQY4-0VDLl1sdudCFFv-Q&s" },
     { name: "BHIM", url: "https://www.bhimupi.org.in/", info: "Official UPI app by NPCI for instant payments.", img: "https://img.icons8.com/?size=512&id=5RcHTSNy4fbL&format=png" },
