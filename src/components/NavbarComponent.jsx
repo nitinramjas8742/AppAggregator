@@ -123,7 +123,7 @@ export function NavbarComponent({ search, setSearch }) {
               ))}
 
               <NavLink
-                to="/login"
+                to="/LoginNotWorking"
                 onClick={() => setMenuOpen(false)}
                 className="mt-1 px-3 py-2 text-center rounded-md text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition"
               >

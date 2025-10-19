@@ -7,6 +7,8 @@ import ContributePage from "./pages/ContributePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import SearchPage from "./pages/SearchPage";
+import LoginNotWorking from "./pages/LoginNotWorking";
+import ThankYouPage from "./pages/ThankyouPage";
 
 function App() {
   const [search, setSearch] = React.useState("");
@@ -17,9 +19,13 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contribute" element={<ContributePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        {/* <Route path="/login" element={<LoginPage />} /> */}
+        <Route path="/login" element={<LoginNotWorking/>} />
+        <Route path="/LoginNotWorking" element={<LoginNotWorking/>} />
+        {/* <Route path="/signup" element={<SignupPage />} /> */}
+         <Route path="/signup" element={<LoginNotWorking/>} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/success" element={<ThankYouPage  />} />
       </Routes>
     </Router>
   );

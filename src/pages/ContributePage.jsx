@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { NavbarComponent } from "../components/NavbarComponent";
+import { useNavigate } from "react-router-dom";
 
 export default function ContributePage() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,7 +13,6 @@ export default function ContributePage() {
     description: "",
   });
   const [search, setSearch] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   const categories = [
     "Productivity",
@@ -42,8 +43,18 @@ export default function ContributePage() {
     }
 
     console.log("Submitted Data:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", appName: "", category: "", description: "" });
+
+    // Redirect to Thank You page with user's name
+    navigate("/success", { state: { name: formData.name } });
+
+    // Reset form (optional)
+    setFormData({
+      name: "",
+      email: "",
+      appName: "",
+      category: "",
+      description: "",
+    });
   };
 
   return (
@@ -73,16 +84,6 @@ export default function ContributePage() {
           Help us make the platform better! Suggest web apps you want to see on
           our portal and provide your contact info so we can follow up.
         </motion.p>
-
-        {submitted && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mb-6 text-green-600 font-semibold"
-          >
-            Thank you! Your suggestion has been submitted.
-          </motion.div>
-        )}
 
         <form
           onSubmit={handleSubmit}
