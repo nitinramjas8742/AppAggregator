@@ -3,12 +3,12 @@ import logo from "../assets/link-looop-connectDiscoverFlow.png";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useLocation } from "react-router-dom";
-import InstallPWAButton from "./InstallPWAButton"; // ✅ added import
+import InstallPWAButton from "./InstallPWAButton"; // ✅ PWA button component
 
 export function NavbarComponent({ search, setSearch }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/"; // true if on homepage
+  const isHome = location.pathname === "/";
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -22,11 +22,7 @@ export function NavbarComponent({ search, setSearch }) {
 
         {/* Logo */}
         <NavLink to="/" className="flex-shrink-0">
-          <img
-            src={logo}
-            alt="logo"
-            className="h-12 w-auto object-contain"
-          />
+          <img src={logo} alt="logo" className="h-12 w-auto object-contain" />
         </NavLink>
 
         {/* Desktop Nav Links */}
@@ -61,12 +57,17 @@ export function NavbarComponent({ search, setSearch }) {
               placeholder="Search..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              disabled={!isHome} // disables on all pages except homepage
+              disabled={!isHome}
               className={`w-32 sm:w-48 text-sm bg-transparent outline-none ${
                 !isHome ? "bg-gray-200 cursor-not-allowed" : ""
               }`}
             />
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16" className="fill-gray-400">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 192.904 192.904"
+              width="16"
+              className="fill-gray-400"
+            >
               <path d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z"></path>
             </svg>
           </div>
@@ -79,12 +80,12 @@ export function NavbarComponent({ search, setSearch }) {
             Login / Signup
           </NavLink>
 
-          {/* ✅ Download App Button (only visible on mobile) */}
+          {/* ✅ Download App Icon Button (only on mobile) */}
           <div className="block lg:hidden">
-            <InstallPWAButton />
+            <InstallPWAButton iconOnly />
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu toggle */}
           <button
             id="toggleOpen"
             className="lg:hidden cursor-pointer"
@@ -129,7 +130,7 @@ export function NavbarComponent({ search, setSearch }) {
                 Login / Signup
               </NavLink>
 
-              {/* ✅ Download App also shown inside mobile dropdown */}
+              {/* ✅ Download App inside mobile dropdown */}
               <div className="mt-2 text-center">
                 <InstallPWAButton />
               </div>

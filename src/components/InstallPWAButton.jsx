@@ -1,61 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from "react";
 
-export default function InstallPWAButton() {
+export default function InstallPWAButton({ iconOnly = false }) {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isInstallable, setIsInstallable] = useState(false);
-  const [isInstalled, setIsInstalled] = useState(false);
+  const [showInstallButton, setShowInstallButton] = useState(false);
 
   useEffect(() => {
-    // Fired when PWA meets install criteria
-    function beforeInstallHandler(e) {
-      e.preventDefault(); // prevents auto mini-infobar
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
       setDeferredPrompt(e);
-      setIsInstallable(true);
-    }
+      setShowInstallButton(true);
+    };
 
-    window.addEventListener('beforeinstallprompt', beforeInstallHandler);
-
-    // Detect if app is already installed (standalone)
-    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-      setIsInstalled(true);
-    }
-
-    function onAppInstalled() {
-      setIsInstalled(true);
-      setIsInstallable(false);
-      setDeferredPrompt(null);
-    }
-    window.addEventListener('appinstalled', onAppInstalled);
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', beforeInstallHandler);
-      window.removeEventListener('appinstalled', onAppInstalled);
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     };
   }, []);
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
-    const choice = await deferredPrompt.userChoice;
-    // choice.outcome will be 'accepted' or 'dismissed'
-    console.log('PWA install choice: ', choice);
+    await deferredPrompt.userChoice;
     setDeferredPrompt(null);
-    setIsInstallable(false);
+    setShowInstallButton(false);
   };
 
-  // If already installed, optionally show nothing or show "Open App"
-  if (isInstalled) return null;
+  if (!showInstallButton) return null;
 
   return (
-    <>
-      {isInstallable ? (
-        <button
-  onClick={handleInstallClick}
-  className="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
->
-  📲 Download App
-</button>
-      ) : null}
-    </>
+    <button
+      onClick={handleInstallClick}
+      title="Download App"
+      className="install-btn flex items-center justify-center p-2"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className="w-5 h-5"
+      >
+        <path d="M12 16a1 1 0 0 1-.7-.29l-5-5a1 1 0 1 1 1.4-1.42L11 12.59V4a1 1 0 1 1 2 0v8.59l3.3-3.3a1 1 0 0 1 1.4 1.42l-5 5A1 1 0 0 1 12 16z" />
+        <path d="M5 20a1 1 0 1 1 0-2h14a1 1 0 1 1 0 2H5z" />
+      </svg>
+      {!iconOnly && <span className="ml-2 text-sm font-semibold">Download</span>}
+    </button>
   );
 }
