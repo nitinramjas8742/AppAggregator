@@ -54,7 +54,7 @@ const Homepage = () => {
 
   useEffect(() => {
   const handleScroll = () => {
-    if (window.scrollY > 175) {
+    if (window.scrollY > 10) {
       setShowScrollButton(true);
     } else {
       setShowScrollButton(false);
