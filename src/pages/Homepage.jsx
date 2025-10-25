@@ -52,18 +52,18 @@ const Homepage = () => {
     }
   }, [sidebarSearch, matchedSection]);
 
-  useEffect(() => {
-  const handleScroll = () => {
-    if (window.scrollY > 10) {
-      setShowScrollButton(true);
-    } else {
-      setShowScrollButton(false);
-    }
-  };
+//   useEffect(() => {
+//   const handleScroll = () => {
+//     if (window.scrollY > -10) {
+//       setShowScrollButton(true);
+//     } else {
+//       setShowScrollButton(false);
+//     }
+//   };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+//   window.addEventListener("scroll", handleScroll);
+//   return () => window.removeEventListener("scroll", handleScroll);
+// }, []);
 
   // 🔍 Global search across all apps
   const allApps = Object.keys(sections).flatMap(key =>
@@ -120,7 +120,7 @@ const Homepage = () => {
 
       {/* Floating search button (mobile only) */}
       {/* Floating search button (mobile only) */}
-{showScrollButton && (
+{/* {showScrollButton && ( */}
   <button
     onClick={() => navigate("/search")}
     className="fixed bottom-6 right-6 sm:hidden bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full p-4 shadow-lg hover:brightness-110 active:scale-95 transition-all duration-200 focus:outline-none"
@@ -141,7 +141,7 @@ const Homepage = () => {
       />
     </svg>
   </button>
-)}
+{/* )} */}
 
 
     </div>
