@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { NavbarComponent } from "../components/NavbarComponent";
 import "./LoginPage.css";
+import AuthContext from "../context/AuthContext"; // ✅ import context
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ export default function LoginPage() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // ✅ access login function
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,19 +31,24 @@ export default function LoginPage() {
         throw new Error(errMsg || "Login failed");
       }
 
-      const data = await response.json(); // expect { token: "..." }
+      const data = await response.json(); // expects { token: "..." }
+      if (!data?.token) {
+        throw new Error("Invalid response: missing token");
+      }
 
-      // Save JWT token to localStorage
+      // ✅ Persist token and update context
+      login(data.token);
       localStorage.setItem("token", data.token);
 
-      console.log("Login successful, token:", data.token);
+      // ✅ Notify app instantly (Homepage updates without refresh)
+      window.dispatchEvent(new Event("loginStatusChanged"));
 
-      // Redirect to home page or dashboard
+      // ✅ Redirect to homepage
       navigate("/");
 
     } catch (err) {
-      console.error("Login error:", err);
-      setError(err.message);
+      console.error("❌ Login error:", err);
+      setError(err.message || "Something went wrong");
     }
   };
 

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./SignupPage.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { NavbarComponent } from "../components/NavbarComponent";
+import AuthContext from "../context/AuthContext"; // ✅ import context
 
 export default function SignupPage() {
-  const navigate = useNavigate(); // for redirecting after signup
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // ✅ get login method from context
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -15,7 +17,6 @@ export default function SignupPage() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -31,7 +32,7 @@ export default function SignupPage() {
     setError("");
     setLoading(true);
 
-    // Validate passwords match on frontend
+    // ✅ Simple password validation
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       setLoading(false);
@@ -47,14 +48,32 @@ export default function SignupPage() {
 
       const data = await res.json();
 
-      if (res.ok) {
-        alert(data.message || "Signup successful!");
-        navigate("/login"); // redirect to login page
-      } else {
+      if (!res.ok) {
         setError(data.message || "Signup failed. Please try again.");
+        return;
       }
+
+      // ✅ If backend returns a token after signup
+      if (data.token) {
+        // Store token in localStorage
+        localStorage.setItem("token", data.token);
+
+        // ✅ Log user into global context
+        login(data.token);
+
+        // ✅ Notify homepage instantly (no refresh needed)
+        window.dispatchEvent(new Event("loginStatusChanged"));
+
+        // ✅ Redirect to homepage
+        navigate("/");
+      } else {
+        // If backend doesn't return a token
+        alert(data.message || "Signup successful! Please log in.");
+        navigate("/login");
+      }
+
     } catch (err) {
-      console.error(err);
+      console.error("❌ Signup error:", err);
       setError("Error connecting to server. Please try later.");
     } finally {
       setLoading(false);
@@ -129,7 +148,9 @@ export default function SignupPage() {
                 />
                 <span
                   className="password-toggle"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  onClick={() =>
+                    setShowConfirmPassword(!showConfirmPassword)
+                  }
                 >
                   {showConfirmPassword ? "🙈" : "👁️"}
                 </span>

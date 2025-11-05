@@ -7,7 +7,7 @@ import ContributePage from "./pages/ContributePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import SearchPage from "./pages/SearchPage";
-import LoginNotWorking from "./pages/LoginNotWorking";
+import PremiumPage from "./pages/PremiumPage.jsx";
 import ThankYouPage from "./pages/ThankyouPage";
 
 function App() {
@@ -20,11 +20,10 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contribute" element={<ContributePage />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/login" element={<LoginNotWorking/>} /> */}
-        {/* <Route path="/LoginNotWorking" element={<LoginNotWorking/>} /> */}
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/success" element={<ThankYouPage  />} />
+        <Route path="/premium" element={<PremiumPage />} />
       </Routes>
     </Router>
   );
