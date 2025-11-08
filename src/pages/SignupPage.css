@@ -1,60 +1,103 @@
+/* SignupPage.css
+   Unified theme for Signup (matches LoginPage.css exactly)
+   Keeps all original class names used by your Signup component
+*/
+
+/* === Page background (shared) === */
+.login-page,
 .signup-page {
+  position: relative;
   min-height: 100vh;
-  background: linear-gradient(135deg, #6c63ff 0%, #007bff 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  background: linear-gradient(135deg, #dbeafe 0%, #e6f0ff 50%, #f8fbff 100%);
+  overflow: hidden;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Decorative blurred blobs (kept subtle and identical for both pages) */
+.login-page::before,
+.signup-page::before,
+.login-page::after,
+.signup-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(96px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+.login-page::before,
+.signup-page::before {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  left: -120px;
+  background: linear-gradient(135deg, rgba(102,166,255,0.95), rgba(137,247,254,0.95));
+}
+.login-page::after,
+.signup-page::after {
+  width: 420px;
+  height: 420px;
+  bottom: -120px;
+  right: -120px;
+  background: linear-gradient(135deg, rgba(102,166,255,0.95), rgba(102,166,255,0.6));
+}
+
+/* === Shared glass-card container === */
+.login-container,
 .signup-container {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 420px;
-  padding: 30px 20px;
-  text-align: center;
-  animation: fadeInUp 0.6s ease;
+  padding: 28px 22px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  color: #0f172a;
+  animation: authFadeIn 560ms cubic-bezier(.16,.84,.29,1);
+  margin: 16px;
+  border: 1px solid rgba(255,255,255,0.6);
 }
 
-/* Mobile responsiveness */
-@media (min-width: 480px) {
-  .signup-container {
-    padding: 40px 30px;
-  }
+/* subtle entrance */
+@keyframes authFadeIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* === Titles & subtitles (shared) === */
+.login-title,
 .signup-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #222;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #0b1220;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.2px;
 }
 
+.login-subtitle,
 .signup-subtitle {
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 25px;
+  text-align: center;
+  font-size: 0.92rem;
+  color: #334155;
+  margin: 0 0 18px 0;
 }
 
-/* Mobile responsiveness for titles */
-@media (min-width: 480px) {
-  .signup-title {
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
-  
-  .signup-subtitle {
-    font-size: 14px;
-    margin-bottom: 30px;
-  }
-}
-
+/* === Form layout (shared) === */
+.login-form,
 .signup-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
 .form-group {
@@ -63,87 +106,142 @@
 
 .form-group label {
   display: block;
-  font-size: 14px;
-  color: #444;
+  font-size: 0.9rem;
+  color: #0b1220;
   margin-bottom: 6px;
+  font-weight: 500;
 }
 
+/* Inputs (shared visuals) */
 .form-group input {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  transition: 0.3s ease;
-}
-
-.form-group input:focus {
-  border-color: #6c63ff;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: rgba(255,255,255,0.92);
+  font-size: 0.96rem;
+  color: #0b1220;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 160ms ease;
   outline: none;
-  box-shadow: 0 0 4px rgba(108, 99, 255, 0.2);
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-/* === Password Eye Icon === */
-.password-wrapper {
-  position: relative;
+/* Focus style (shared) */
+.form-group input:focus {
+  border-color: rgba(37,99,235,0.85);
+  box-shadow: 0 6px 18px rgba(37,99,235,0.06), 0 1px 0 rgba(255,255,255,0.6) inset;
 }
 
+/* Error / message block (keeps same name style if you use it) */
+.error-message,
+.login-error,
+.signup-error {
+  color: #b91c1c;
+  background: rgba(185,28,28,0.06);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* === Password toggles (shared) === */
+.password-wrapper { position: relative; }
 .password-toggle {
   position: absolute;
-  right: 12px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   font-size: 18px;
   user-select: none;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  opacity: 0.85;
+  transition: opacity 140ms ease, transform 140ms ease;
 }
+.password-toggle:hover { opacity: 1; transform: translateY(-50%) scale(1.03); }
 
-.password-toggle:hover {
-  opacity: 1;
-}
-
+/* === Buttons (shared) === */
+.login-btn,
 .signup-btn {
-  background: #6c63ff;
-  color: #fff;
+  display: inline-block;
+  width: 100%;
   padding: 12px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
+  background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, #a5f3fc 100%);
+  color: #04263b;
+  box-shadow: 0 8px 30px rgba(59,130,246,0.14);
+  transition: transform 140ms ease, box-shadow 200ms ease, filter 140ms ease;
 }
 
+/* Hover / active */
+.login-btn:hover,
 .signup-btn:hover {
-  background: #554be0;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(59,130,246,0.18);
+}
+.login-btn:active,
+.signup-btn:active {
+  transform: translateY(-1px);
 }
 
+/* Disabled state kept for signup */
+.signup-btn[disabled],
+.login-btn[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+  filter: saturate(0.9);
+}
+
+/* === Footer links (shared) === */
+.login-footer,
 .signup-footer {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #555;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.92rem;
+  color: #334155;
 }
 
+.signup-link,
 .login-link {
-  color: #6c63ff;
+  color: #1e40af;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.3s ease;
+  margin-left: 4px;
+  transition: color 160ms ease;
 }
 
+.signup-link:hover,
 .login-link:hover {
-  color: #554be0;
+  color: #0b3b82;
+  text-decoration: underline;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+/* === Mobile responsiveness adjustments === */
+@media (max-width: 480px) {
+  .login-container,
+  .signup-container {
+    padding: 18px 14px;
+    margin: 8px;
+    border-radius: 12px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .login-title,
+  .signup-title {
+    font-size: 1.4rem;
+  }
+
+  .form-group input {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .login-btn,
+  .signup-btn {
+    padding: 11px;
+    font-size: 0.98rem;
   }
 }

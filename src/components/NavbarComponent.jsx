@@ -28,7 +28,6 @@ export function NavbarComponent({ search, setSearch }) {
 
   const handleLogout = () => {
     logout();
-    window.location.reload();
     navigate("/");
   };
 
