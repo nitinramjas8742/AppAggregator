@@ -2,11 +2,11 @@ import React, { useState, useContext } from "react";
 import "./SignupPage.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { NavbarComponent } from "../components/NavbarComponent";
-import AuthContext from "../context/AuthContext"; // ✅ import context
+import AuthContext from "../context/AuthContext";
 
 export default function SignupPage() {
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext); // ✅ get login method from context
+  const { login } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -32,12 +32,12 @@ export default function SignupPage() {
     setError("");
     setLoading(true);
 
-    // ✅ Simple password validation
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       setLoading(false);
       return;
     }
+
     try {
       const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, {
         method: "POST",
@@ -52,21 +52,12 @@ export default function SignupPage() {
         return;
       }
 
-      // ✅ If backend returns a token after signup
       if (data.token) {
-        // Store token in localStorage
         localStorage.setItem("token", data.token);
-
-        // ✅ Log user into global context
         login(data.token);
-
-        // ✅ Notify homepage instantly (no refresh needed)
         window.dispatchEvent(new Event("loginStatusChanged"));
-
-        // ✅ Redirect to homepage
         navigate("/");
       } else {
-        // If backend doesn't return a token
         alert(data.message || "Signup successful! Please log in.");
         navigate("/login");
       }
@@ -82,6 +73,7 @@ export default function SignupPage() {
   return (
     <>
       <NavbarComponent />
+
       <div className="signup-page">
         <div className="signup-container">
           <h2 className="signup-title">Create Account 🚀</h2>
@@ -156,6 +148,7 @@ export default function SignupPage() {
               </div>
             </div>
 
+            {/* ✅ Updated Signup Button */}
             <button type="submit" className="signup-btn" disabled={loading}>
               {loading ? "Signing Up..." : "Sign Up"}
             </button>

@@ -2,53 +2,56 @@ import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { NavbarComponent } from "../components/NavbarComponent";
 import "./LoginPage.css";
-import AuthContext from "../context/AuthContext"; // ✅ import context
+import AuthContext from "../context/AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);   // ✅ NEW
 
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext); // ✅ access login function
+  const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    setLoading(true); // ✅ Start loading
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       if (!response.ok) {
         const errMsg = await response.text();
         throw new Error(errMsg || "Login failed");
       }
 
-      const data = await response.json(); // expects { token: "..." }
+      const data = await response.json();
       if (!data?.token) {
         throw new Error("Invalid response: missing token");
       }
 
-      // ✅ Persist token and update context
       login(data.token);
       localStorage.setItem("token", data.token);
-
-      // ✅ Notify app instantly (Homepage updates without refresh)
       window.dispatchEvent(new Event("loginStatusChanged"));
-
-      // ✅ Redirect to homepage
       navigate("/");
 
     } catch (err) {
       console.error("❌ Login error:", err);
       setError(err.message || "Something went wrong");
+
+    } finally {
+      setLoading(false); // ✅ Stop loading
     }
   };
 
@@ -93,8 +96,12 @@ export default function LoginPage() {
 
             {error && <p className="error-message">{error}</p>}
 
-            <button type="submit" className="login-btn">
-              Log In
+            <button
+              type="submit"
+              className="login-btn"
+              disabled={loading} // ✅ Disable while loading
+            >
+              {loading ? "Logging in..." : "Log In"} {/* ✅ Text change */}
             </button>
 
             <div className="login-footer">
