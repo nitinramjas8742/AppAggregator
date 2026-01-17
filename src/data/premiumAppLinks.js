@@ -16,9 +16,15 @@ export const premiumLinks = [
     img: "https://cdn.dribbble.com/userupload/16496330/file/still-61229cc891be5f16b5609eba33520c69.png"
   },
   {
-    name: "FounderPal",
-    url: "https://founderpal.ai/idea-validator",
-    info: "Validate your startup idea using market insights and AI analysis.",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS159NtznF5hZPzKlM-dlPrvfrMI8dVqdJhSw&s",
+    name: "GrokAI",
+    url: "https://grok.com/",
+    info: "App to generate AI images and Videos as your imagination",
+    img: "https://images.indianexpress.com/2025/03/Grok-memes.jpg",
+  },
+  {
+    name: "KlingAI",
+    url: "https://app.klingai.com/global/",
+    info: "Watch amazing AI only short videos, nothing real",
+    img: "https://www.latestmodapks.com/wp-content/uploads/2025/03/kling-ai-mod-logo-media.webp",
   },
 ];

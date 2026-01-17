@@ -95,7 +95,7 @@ const Homepage = () => {
         <NoticeHeadline
           text={
             isLoggedIn
-              ? "🌟 Enjoy Premium Apps!"
+              ? "🌟 Enjoy Premium Apps! Click on premium apps tab in navbar"
               : "🚨 To unlock premium Apps, just log in! 🔑✨"
           }
         />
