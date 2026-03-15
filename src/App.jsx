@@ -44,6 +44,7 @@ import SignupPage from "./pages/SignupPage";
 import SearchPage from "./pages/SearchPage";
 import PremiumPage from "./pages/PremiumPage.jsx";
 import ThankYouPage from "./pages/ThankyouPage";
+import ProfessionPage from "./pages/ProfessionPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -60,6 +61,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/professions" element={<ProfessionPage />} />
           <Route path="/success" element={<ThankYouPage />} />
 
           {/* 🔒 Protected route */}

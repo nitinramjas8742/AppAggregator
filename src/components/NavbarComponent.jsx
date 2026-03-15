@@ -19,6 +19,7 @@ export function NavbarComponent({ search, setSearch }) {
 
   const navLinks = [
     { name: "Home", path: "/" },
+    { name: "Professions", path: "/professions", isNew: true },
     { name: "About", path: "/about" },
     { name: "Contribute", path: "/contribute" },
   ];
@@ -84,15 +85,17 @@ export function NavbarComponent({ search, setSearch }) {
                   }`
                 }
               >
-                {link.name}
+                <span className="inline-flex items-center gap-2">
+                  {link.name}
+                  {link.isNew && (
+                    <span className="text-[10px] font-semibold bg-yellow-300 text-gray-900 px-2 py-0.5 rounded-full">
+                      New
+                    </span>
+                  )}
+                </span>
               </NavLink>
             ))}
           </nav>
-
-          {/* Tagline */}
-          <div className="mx-2 font-bold text-sm whitespace-nowrap flex-shrink bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-yellow-400 to-blue-500 animate-gradient-x">
-            Indian Web Store
-          </div>
 
           {/* Right side */}
           <div className="flex items-center gap-2 ml-auto flex-shrink-0">
@@ -193,7 +196,14 @@ export function NavbarComponent({ search, setSearch }) {
                     onClick={() => setMenuOpen(false)}
                     className="px-3 py-2 rounded-md text-sm hover:bg-gray-100"
                   >
-                    {link.name}
+                    <span className="inline-flex items-center gap-2">
+                      {link.name}
+                      {link.isNew && (
+                        <span className="text-[10px] font-semibold bg-yellow-300 text-gray-900 px-2 py-0.5 rounded-full">
+                          New
+                        </span>
+                      )}
+                    </span>
                   </NavLink>
                 ))}
 
