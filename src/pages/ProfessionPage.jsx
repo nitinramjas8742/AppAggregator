@@ -25,9 +25,9 @@ const ProfessionPage = () => {
     <div className="min-h-screen bg-gray-50">
       <NavbarComponent search={navbarSearch} setSearch={setNavbarSearch} />
 
-      <section className="max-w-screen-xl mx-auto pt-10 px-4">
-        {!activeProfession && (
-          <div className="mt-6 flex justify-center">
+      {!activeProfession && (
+        <section className="max-w-screen-xl mx-auto pt-4 px-4">
+          <div className="mt-4 flex justify-center">
             <input
               type="text"
               placeholder="Search professions..."
@@ -36,8 +36,8 @@ const ProfessionPage = () => {
               className="w-full sm:max-w-md px-4 py-2 border border-gray-200 rounded-md bg-white focus:outline-none focus:border-blue-500"
             />
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
       {!activeProfession ? (
         <section className="max-w-screen-xl mx-auto py-10 px-4">
@@ -69,7 +69,7 @@ const ProfessionPage = () => {
         </section>
       ) : (
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="flex items-center justify-between pt-8">
+          <div className="flex items-center justify-between pt-4">
             <h2 className="text-2xl font-semibold text-gray-800 text-center flex-1">
               {professionSections[activeProfession].title}
             </h2>
