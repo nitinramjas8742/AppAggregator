@@ -88,7 +88,7 @@ const Homepage = () => {
       />
 
       {/* Main content */}
-      <main className="flex-1">
+      <main className="flex-1 min-w-0">
         <NavbarComponent search={search} setSearch={setSearch} />
 
         {/* ✅ Dynamic Notice Headline */}

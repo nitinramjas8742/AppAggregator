@@ -37,6 +37,27 @@
   animation: gradient-x 3s linear infinite;
 }
 
+.navbar-logo {
+  height: 40px;
+  max-width: 140px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 420px) {
+  .navbar-logo {
+    height: 32px;
+    max-width: 70px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-logo {
+    height: 48px;
+    max-width: 160px;
+  }
+}
+
 .logout-modal-overlay {
   position: fixed;
   top: 0;

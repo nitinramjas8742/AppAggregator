@@ -66,11 +66,15 @@ export function NavbarComponent({ search, setSearch }) {
       {/* ------------------------------------------------ */}
 
       <header className="border-b border-gray-200 bg-white shadow-sm sticky top-0 z-50 w-full">
-        <div className="flex items-center justify-between max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-[65px] gap-2">
+        <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-[65px] gap-2 min-w-0">
 
           {/* Logo */}
-          <NavLink to="/" className="flex-shrink-0">
-            <img src={logo} alt="logo" className="h-12 w-auto object-contain" />
+          <NavLink to="/" className="flex-shrink-0 min-w-0">
+            <img
+              src={logo}
+              alt="logo"
+              className="navbar-logo"
+            />
           </NavLink>
 
           {/* Desktop Nav Links */}
@@ -98,7 +102,7 @@ export function NavbarComponent({ search, setSearch }) {
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-2 ml-auto flex-shrink-0">
+          <div className="flex items-center gap-2 max-[390px]:gap-1 ml-auto flex-shrink-0 min-w-0">
 
             {/* Search */}
             <div className="hidden sm:flex items-center bg-gray-100 px-3 py-2 border border-gray-200 rounded-md focus-within:border-blue-500 transition-all">
@@ -163,7 +167,7 @@ export function NavbarComponent({ search, setSearch }) {
             {/* Mobile menu toggle */}
             <button
               id="toggleOpen"
-              className="lg:hidden cursor-pointer"
+              className="lg:hidden cursor-pointer flex-shrink-0"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? (
